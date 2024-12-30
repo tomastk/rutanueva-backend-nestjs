@@ -1,21 +1,25 @@
 import { Shipping } from 'src/domain/models/Shipping';
 import { CreateShippingDto } from '../dtos/CreateShippingDTO';
-import { logger, shippingList } from 'src/Infrastructure/instances';
+import { logger } from 'src/Infrastructure/instances';
 import { SHIPPING_IS_INVALID } from 'src/Infrastructure/errors';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class CreateShipping {
+  constructor(
+    @InjectRepository(Shipping)
+    private readonly shippingRepository: Repository<Shipping>,
+  ) {}
+
   private isShippingValid(shipping: Shipping): boolean {
-    return !shippingList
-      .map((shipping) => shipping.shippingDescription)
-      .includes(shipping.shippingDescription);
+    return true;
   }
 
-  run(createShippingDTO: CreateShippingDto): Shipping {
+  async run(createShippingDTO: CreateShippingDto): Promise<Shipping> {
     logger.log('POST - /shipping');
-    const shipping = Shipping.fromDTO(
-      createShippingDTO,
-      String(shippingList.length + 1),
-    );
+    const shipping = Shipping.fromDTO(createShippingDTO);
 
     if (!this.isShippingValid(shipping)) {
       logger.error('DUPLICATE SHIPPING - /shipping');
@@ -23,9 +27,8 @@ export class CreateShipping {
       throw new Error(SHIPPING_IS_INVALID);
     }
 
-    shippingList.push(shipping);
-    logger.log('SHIPPING CREATED - /shipping');
-
-    return shipping;
+    const createdShipping = this.shippingRepository.create(shipping);
+    await this.shippingRepository.save(createdShipping);
+    return createdShipping;
   }
 }

@@ -1,22 +1,24 @@
 import { CreateShippingDto } from 'src/application/dtos/CreateShippingDTO';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('shipping')
 export class Shipping {
-  constructor(
-    public readonly id: string,
-    public readonly shippingDescription: string,
-    public readonly clientName: string,
-    public readonly coordinates: {
-      lat: string;
-      long: string;
-    },
-  ) {}
+  @PrimaryGeneratedColumn()
+  id: string;
 
-  static fromDTO(dto: CreateShippingDto, id: string) {
-    return new Shipping(
-      id,
-      dto.shippingDescription,
-      dto.clientName,
-      dto.coordinates,
-    );
+  @Column()
+  shippingDescription: string;
+
+  @Column()
+  clientName: string;
+
+  @Column('json')
+  coordinates: {
+    lat: string;
+    long: string;
+  };
+
+  static fromDTO(dto: CreateShippingDto) {
+    return Object.assign(new Shipping(), dto);
   }
 }
