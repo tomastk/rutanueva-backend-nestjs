@@ -3,6 +3,7 @@ import { OptimizeRouteDTO } from 'src/routeoptimization/domain/dtos/optimize-rou
 import { OptimizeRoute } from 'src/routeoptimization/application/use-cases/optimize-route';
 import { Logger } from 'src/shared/logger/logger';
 import { apiResponseCreator } from 'src/shared/nest/api-response-creator';
+import { ApiBody } from '@nestjs/swagger';
 
 @Controller('optimize-route')
 export class OptimizeRouteController {
@@ -17,6 +18,7 @@ export class OptimizeRouteController {
   }
 
   @Post('')
+  @ApiBody({ type: () => OptimizeRouteDTO }) // Usa una función flecha para pasar el tipo
   async post(@Body() dto: OptimizeRouteDTO) {
     this.logger.log('POST /optimize-route');
     this.logger.debug(JSON.stringify(dto, null, 2));

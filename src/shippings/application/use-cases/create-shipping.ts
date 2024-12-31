@@ -16,7 +16,6 @@ export class CreateShipping {
   private isShippingValid(shipping: Shipping): boolean {
     return true;
   }
-
   async run(createShippingDTO: CreateShippingDto): Promise<Shipping> {
     logger.log('POST - /shipping');
     const shipping = Shipping.fromDTO(createShippingDTO);
