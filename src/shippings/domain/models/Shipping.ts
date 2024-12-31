@@ -1,4 +1,4 @@
-import { CreateShippingDto } from 'src/application/dtos/CreateShippingDTO';
+import { CreateShippingDto } from 'src/shippings/domain/dtos/CreateShippingDTO';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('shipping')

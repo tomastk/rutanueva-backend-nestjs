@@ -1,3 +1,6 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
 export class Logger {
   private get timestamp(): string {
     const date = new Date();

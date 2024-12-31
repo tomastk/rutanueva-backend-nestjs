@@ -1,7 +1,7 @@
-import { Shipping } from 'src/domain/models/Shipping';
-import { CreateShippingDto } from '../dtos/CreateShippingDTO';
-import { logger } from 'src/Infrastructure/instances';
-import { SHIPPING_IS_INVALID } from 'src/Infrastructure/errors';
+import { Shipping } from 'src/shippings/domain/models/Shipping';
+import { CreateShippingDto } from '../../domain/dtos/CreateShippingDTO';
+import { logger } from 'src/shared/instances';
+import { SHIPPING_IS_INVALID } from 'src/shared/errors';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';

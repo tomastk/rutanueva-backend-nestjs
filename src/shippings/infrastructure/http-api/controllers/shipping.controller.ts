@@ -1,9 +1,9 @@
 import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { CreateShippingDto } from 'src/application/dtos/CreateShippingDTO';
-import { apiResponseCreator } from '../api-response-creator';
-import { CreateShipping } from 'src/application/use-cases/create-shipping';
-import { GetShippings } from 'src/application/use-cases/get-shippings';
+import { CreateShippingDto } from 'src/shippings/domain/dtos/CreateShippingDTO';
+import { apiResponseCreator } from '../../../../shared/nest/api-response-creator';
+import { CreateShipping } from 'src/shippings/application/use-cases/create-shipping';
+import { GetShippings } from 'src/shippings/application/use-cases/get-shippings';
 
 @Controller('shippings')
 export class ShippingController {
