@@ -14,3 +14,5 @@
 - **Base de datos**: PostgreSQL
 - **Frontend**: Next.js
 - **Optimización de rutas**: OpenRouteService (Docker)
+- **Base De Datos**: PostgreSQL
+- **ORM**: TypeOrm
