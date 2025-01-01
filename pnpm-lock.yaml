@@ -35,6 +35,9 @@ importers:
       class-validator:
         specifier: ^0.14.1
         version: 0.14.1
+      openrouteservice-js:
+        specifier: ^0.4.1
+        version: 0.4.1
       pg:
         specifier: ^8.13.1
         version: 8.13.1
@@ -2185,6 +2188,9 @@ packages:
   onetime@5.1.2:
     resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
+
+  openrouteservice-js@0.4.1:
+    resolution: {integrity: sha512-Oeb/KgzaYXEtafSHB40KfZvHFfTSPhtt0/oEf0jv5o5Ljw3//+C63CFxbknOqDBrOkYLLQMMCjJGa54rUOBtLg==}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -5562,6 +5568,8 @@ snapshots:
   onetime@5.1.2:
     dependencies:
       mimic-fn: 2.1.0
+
+  openrouteservice-js@0.4.1: {}
 
   optionator@0.9.4:
     dependencies:
