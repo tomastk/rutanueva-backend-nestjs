@@ -19,6 +19,8 @@ export class CreateShipping {
   async run(createShippingDTO: CreateShippingDto): Promise<Shipping> {
     logger.log('POST - /shipping');
     const shipping = Shipping.fromDTO(createShippingDTO);
+    console.log(shipping.clientName);
+    logger.log(JSON.stringify(shipping, null, 2));
 
     if (!this.isShippingValid(shipping)) {
       logger.error('DUPLICATE SHIPPING - /shipping');
