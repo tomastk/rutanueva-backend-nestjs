@@ -1,4 +1,3 @@
-import { OptimizeRouteDTO } from '../dtos/optimize-route-dto';
 import { OptimizedRoute } from '../models/OptimizedRoute';
 import { UnoptimizedRoute } from '../models/UnoptimizedRoute';
 

@@ -3,6 +3,19 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('shipping')
 export class Shipping {
+  constructor(
+    shippingDescription: string,
+    clientName: string,
+    coordinates: {
+      lat: string;
+      long: string;
+    },
+  ) {
+    this.shippingDescription = shippingDescription;
+    this.clientName = clientName;
+    this.coordinates = coordinates;
+  }
+
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -19,6 +32,9 @@ export class Shipping {
   };
 
   static fromDTO(dto: CreateShippingDto) {
-    return Object.assign(new Shipping(), dto);
+    return new Shipping(dto.shippingDescription, dto.clientName, {
+      lat: dto.lat,
+      long: dto.long,
+    });
   }
 }

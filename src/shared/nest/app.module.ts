@@ -14,7 +14,7 @@ import { Logger } from '../logger/logger';
 import { ForGetShippings } from 'src/shippings/domain/ports/for-get-shippings';
 import { ShippingManager } from 'src/routeoptimization/application/adapters/shipping-manager';
 import { ForShippingManagment } from 'src/routeoptimization/domain/ports/for-shipping-managment';
-import { RouteOptimizationRepositoryImp } from 'src/routeoptimization/application/adapters/route-optimization-repository-impl';
+import { OpenRouteServiceRouteOptimizer } from 'src/routeoptimization/application/adapters/route-optimization-repository-impl';
 
 @Module({
   imports: [
@@ -49,7 +49,7 @@ import { RouteOptimizationRepositoryImp } from 'src/routeoptimization/applicatio
     },
     {
       provide: RouteOptimizationRepository, // Proveedor: la interfaz
-      useClass: RouteOptimizationRepositoryImp, // Implementación concreta
+      useClass: OpenRouteServiceRouteOptimizer, // Implementación concreta
     },
   ],
 })

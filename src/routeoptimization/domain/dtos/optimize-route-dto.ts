@@ -10,6 +10,11 @@ export class Coordinates {
     example: '-74.0060',
   })
   long: string;
+
+  constructor(lat: string, long: string) {
+    this.lat = lat;
+    this.long = long;
+  }
 }
 
 // Define OptimizeRouteDTO como una clase

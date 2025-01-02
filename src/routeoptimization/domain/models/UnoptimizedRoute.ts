@@ -7,4 +7,16 @@ export class UnoptimizedRoute {
     private destination: Coordinates,
     private shippings: Shipping[],
   ) {}
+
+  getOrigin(): Coordinates {
+    return this.origin;
+  }
+
+  getDestination(): Coordinates {
+    return this.destination;
+  }
+
+  getShippings(): Shipping[] {
+    return this.shippings;
+  }
 }
