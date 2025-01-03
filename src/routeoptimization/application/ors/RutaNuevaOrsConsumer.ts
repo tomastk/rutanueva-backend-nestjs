@@ -1,9 +1,10 @@
 import { UnoptimizedRoute } from 'src/routeoptimization/domain/models/UnoptimizedRoute';
 import { OrsApiResponse } from '../schemas/ors-unoptimized-route';
 import { OrsParser } from './OrsParser';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { logger } from 'src/shared/instances';
 import { Injectable } from '@nestjs/common';
+import { Console } from 'console';
 
 export class RutaNuevaOrsConsumer {
   api_key: string;
@@ -26,13 +27,10 @@ export class RutaNuevaOrsConsumer {
       Authorization: this.api_key,
     };
     const body = OrsParser.fromUnoptimizedToRoutePlanning(unoptimizedRoute);
-
     const response = await axios.post<OrsApiResponse>(this.baseUrl, body, {
       headers,
     });
-
-    logger.log('ORS RESPONSE');
-
+    console.log(response.data.code);
     return response.data;
   }
 }

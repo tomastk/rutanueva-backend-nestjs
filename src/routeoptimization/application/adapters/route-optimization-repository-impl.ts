@@ -3,6 +3,7 @@ import { OptimizedRoute } from '../../domain/models/OptimizedRoute';
 import { RouteOptimizationRepository } from '../../domain/repository/RouteOptimization.repository';
 import { UnoptimizedRoute } from '../../domain/models/UnoptimizedRoute';
 import { RutaNuevaOrsConsumer } from '../ors/RutaNuevaOrsConsumer';
+import axios, { AxiosError } from 'axios';
 
 @Injectable()
 export class OpenRouteServiceRouteOptimizer extends RouteOptimizationRepository {
@@ -25,9 +26,10 @@ export class OpenRouteServiceRouteOptimizer extends RouteOptimizationRepository 
           location: step.location.reverse().join(','),
         })),
       );
-    } catch (error) {
-      console.error('Error during optimization:', error);
-      throw new Error(error.message || 'Unknown error during optimization');
+    } catch (error: any) {
+      throw new Error(
+        error.response.data.error || 'Unknown error during optimization',
+      );
     }
   }
 }
