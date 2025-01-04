@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { OptimizeRouteDTO } from 'src/routeoptimization/domain/dtos/optimize-route-dto';
-import { OptimizeRoute } from 'src/routeoptimization/application/use-cases/optimize-route';
+import { OptimizeRoute } from 'src/routeoptimization/application/adapters/optimize-route';
 import { Logger } from 'src/shared/logger/logger';
 import { apiResponseCreator } from 'src/shared/nest/api-response-creator';
 import { ApiBody } from '@nestjs/swagger';
